@@ -1,0 +1,388 @@
+/* Global visual Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Intialising colors variables */
+html {
+  --BG: hsl(0, 0%, 98%);
+  --elementBG: hsl(0, 0%, 100%);
+  --shadow: hsl(0, 0%, 75%);
+  --textColor: hsl(200, 15%, 8%);
+  --input: hsl(0, 0%, 52%);
+}
+
+/* Dark Mode */
+html[data-theme="dark"] {
+  --BG: hsl(207, 26%, 17%);
+  --elementBG: hsl(209, 23%, 22%);
+  --shadow: hsl(209, 23%, 10%);
+  --textColor: hsl(0, 0%, 100%);
+  --input: hsl(0, 0%, 100%);
+}
+
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  background-color: var(--BG);
+  color: var(--textColor);
+}
+
+
+/* Top bar */
+#nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: center;
+  width: 100%;
+  height: 55px;
+  padding: 50px 30px;
+  background-color: var(--elementBG);
+  box-shadow: 0 0 15px var(--shadow);
+}
+
+#logo {
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.darkMode {
+  display: flex;
+  justify-self: right;
+  align-items: center;
+  cursor: pointer;
+}
+
+.darkMode p {
+  font-weight: 600;
+  margin-left: 1rem;
+}
+
+#cards {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 30px;
+  z-index: 0;
+}
+
+.search {
+  background-color: var(--elementBG);
+  box-shadow: 0 0 15px var(--shadow);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  height: 30px;
+  padding: 40px 30px;
+  display: flex;
+  align-items: center;
+}
+
+.search .fas {
+  color: var(--input);
+  font-size: 1.5rem;
+}
+
+.search input[type=text] {
+  -webkit-appearance: none;
+  background-color: var(--elementBG);
+  color: var(--textColor);
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-left: 25px;
+  font-size: 1rem;
+  height: 35px;
+}
+
+.search input[type=text]::placeholder {
+  color: var(--input);
+}
+
+.back{
+  background-color: var(--elementBG);
+  box-shadow: 0 0 15px var(--shadow);
+  border-radius: 5px;
+  width: fit-content;
+  padding: 15px 40px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: 350ms background-color, color;
+}
+
+.back p{
+  margin-left: 25px;
+}
+
+.poster{
+  display: grid;
+  grid-template-rows: 1fr auto;
+  width: 100%;
+}
+
+.poster .info{
+  padding-top: 10%;
+  width: 100%;
+}
+
+.poster img{
+  width: 100%;
+  box-shadow: 0 0 15px var(--shadow);
+}
+
+.one, .two, .three{
+  margin: 10% 0;
+}
+
+.borders{
+  display: flex;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  
+}
+
+.borders > div{
+  background-color: var(--elementBG);
+  box-shadow: 0 0 15px var(--shadow);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 10px 5px 0 ;
+  text-align: center;
+}
+
+.countries {
+  padding: 0 40px;
+  width: 100%;
+
+}
+
+.card {
+  position: relative;
+  margin: 80px 20px;
+  margin-right: 0;
+  background-color: var(--elementBG);
+  box-shadow: 0 0 15px var(--shadow);
+  border-radius: 10px;
+  overflow: hidden;
+  flex-basis: 100%;
+  cursor: pointer;
+  padding-top: 250px;
+}
+
+.card .flag {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 0 1px 5px var(--shadow);
+  transition: 150ms height;
+}
+
+.card .info {
+  padding: 0 10% 15%;
+}
+
+.card h1, .poster h1 {
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+}
+
+.card p, .poster p {
+  font-size: 1.3rem;
+  line-height: 2rem;
+}
+
+p strong {
+  font-weight: 600;
+}
+
+/* Dropdown Select */
+
+.select-box {
+  position: relative;
+  display: flex;
+  width: 200px;
+  margin-top: 50px;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.select-box .options-container {
+  position: absolute;
+  top: 95px;
+  background-color: var(--elementBG);
+  box-shadow: 0 0 15px var(--shadow);
+  color: var(--textColor);
+  max-height: 0;
+  width: 100%;
+  padding: 20px 30px;
+  opacity: 0;
+  transition: all 0.4s;
+  border-radius: 10px;
+  overflow: hidden;
+
+  order: 1;
+}
+
+.selected {
+  background-color: var(--elementBG);
+  box-shadow: 0 0 15px var(--shadow);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  height: 30px;
+  padding: 40px 30px;
+  align-items: center;
+  color: var(--textColor);
+  position: relative;
+  display: flex;
+  order: 0;
+}
+
+.selected::after {
+  content: "";
+  background: url("./img/arrow-down.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  position: absolute;
+  height: 100%;
+  width: 32px;
+  right: 10px;
+  top: 30%;
+
+  transition: all 0.4s;
+}
+
+.select-box .options-container.active {
+  max-height: 100vh;
+  opacity: 1;
+}
+
+.select-box .options-container.active+.selected::after {
+  transform: rotateX(180deg);
+  top: -25%;
+}
+
+.select-box .option,
+.selected {
+  cursor: pointer;
+}
+
+.select-box .option {
+  padding: 5px 0;
+}
+
+.select-box label {
+  cursor: pointer;
+}
+
+.select-box .option .radio {
+  display: none;
+}
+
+@media screen and (min-width: 860px) {
+  
+  #nav{
+    padding: 40px 80px;
+  }
+
+  #cards {
+    margin: 40px 80px;
+  }
+
+  .topDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .search {
+    width: 480px;
+  }
+
+  .select-box {
+    margin: 0;
+    justify-self: end;
+  }
+
+  .countries {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    padding: 0;
+    margin: 45px 0;
+  }
+
+  .card {
+    margin: 0;
+  }
+
+
+}
+
+@media screen and (min-width: 1440px) {
+  .countries {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .card:hover .flag{
+    height: 100%;
+  }
+
+
+.back:hover{
+  background-color: var(--input);
+  color: var( --elementBG);
+  
+}
+
+  .poster{
+    grid-template-columns: 1fr 1fr;
+    gap: 120px;
+    align-items: center;
+  }
+
+  .poster .info{
+    display: grid;
+    grid-template-areas: 
+    "name name"
+    "one two"
+    "three three"
+    ;
+  }
+
+  .poster .info h1{
+    grid-area: name;
+  }
+
+  .one{
+    grid-area: one;
+  }
+
+  .two{
+    grid-area: two;
+  }
+  .three{
+    grid-area: three;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: top;
+  }
+
+  .three p{
+    margin-top: 5px;
+  }
+
+  .borders{
+    margin: 0;
+  }
+  .borders > div{
+    margin: 5px 10px;
+  }
+
+}
